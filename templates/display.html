@@ -1,0 +1,1124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}  
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" > 
+    <link href="{% static 'insert_records.css' %}" rel="stylesheet" >
+    <link href="{% static 'display.css' %}" rel="stylesheet" >
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <title>Time Tracking Tool</title>
+    <style>
+
+        a.link1:link, a.link1:visited {
+          background-color: transparent;
+          color: black;
+          border: 1px solid rgb(3, 17, 83);
+          padding: 5px 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+        }
+        
+        a.link1:hover, a.link1:active {
+          background-color: rgb(18, 63, 189);
+          color: black;
+        }
+
+
+        a.link2:link, a.link2:visited {
+          background-color: transparent;
+          color: black;
+          border: 1px solid rgb(3, 17, 83);
+          padding: 5px 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+        }
+        
+        a.link2:hover, a.link2:active {
+          background-color: rgb(230, 19, 47);
+          color: black;
+        }
+        a:link, a:visited {
+          background-color: transparent;
+          color: black;
+          border: 1px solid rgb(3, 17, 83);
+          padding: 5px 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+        }
+        
+        a:hover, a:active {
+          background-color:  rgb(236, 132, 12);
+          color: black;
+        }
+
+
+            </style>
+<script type = "text/javascript">
+    function confirmation()
+    {
+        return confirm("Do you want to permanently delete the entire week's record? ")
+    }
+
+    function confirmation2()
+    {
+        return confirm("Do you want to permanently delete this system code for the displayed dates?")
+    }
+
+
+
+
+</script>
+
+</head>
+<body style="background-color:rgb(255, 255, 255);">
+
+<center>
+
+
+    <div id = "heading" style = "height: 120px;" >
+        <div id ="Logo"> 
+            <img src = "static/Logo.png" width = "180" height = "120" >
+        </div>
+
+    <h1 style="font-size: 80px;"> &#9716 Time Tracking   </h1>
+    
+    </div>
+
+</br>
+    
+    <p>
+    <form method='post'>
+        {% csrf_token %}
+        <div style="overflow-x: auto;">
+    <table >
+
+
+        <tr>
+            <td align = "right" > Search Name: </td>
+            <td> <input list = "names" class="form-control" placeholder="Enter Your Name"  name = "empname"> </td>
+            <datalist id = "names">
+                <option>
+                    David_Abplanalp
+                </option>
+                <option>
+                    Guillaume_Lortie
+                </option>
+                <option>
+                    Daniel_Severinsen
+                </option>
+                <option>
+                    Tommaso_Capuano
+                </option>
+                <option>
+                    Stefan_Brieschenk
+                </option>
+                <option>
+                    Jacopo_Ventura
+                </option>
+                <option>
+                    Jonas_Gauger
+                </option>
+                <option>
+                    Stijn_Koehler 
+                </option>
+                <option>
+                    Filipe_Barreiro 
+                </option>
+                <option>
+                    Dangelo_Aniello 
+                </option>
+                <option>
+                    Rehan_Bandara 
+                </option>
+                <option>
+                    Stephan_Schmid 
+                </option>
+                <option>
+                    Matthias_Hecht 
+                </option>
+                <option>
+                    Ponnaiyan_Ramasamy 
+                </option>
+                <option>
+                    Martin_Lee 
+                </option>
+                <option>
+                    Tomasz_Witkowski 
+                </option>
+                <option>
+                    Stefano_Luca 
+                </option>
+                <option>
+                    Stefan_Eisenknappl 
+                </option>
+                <option>
+                    Tut_Baldock 
+                </option>
+                <option>
+                    Marc_Haßenpflug
+                </option>
+                <option>
+                    Johann_Gogesch
+                </option>
+                <option>
+                    Phillip_Abplanalp 
+                </option>
+                <option>
+                    Pierpaolo_Toniato  
+                </option>
+                <option>
+                    Michael_Mair  
+                </option>
+                <option>
+                    Sebastian_Landsmann  
+                </option>
+                <option>
+                    Jakhongir_Mamadov  
+                </option>
+                <option>
+                    Babu_Maddukuri  
+                </option>
+                <option>
+                    Kiran_Chincholi  
+                </option>
+                <option>
+                    Shahid_Mobin  
+                </option>
+                <option>
+                    Thomas_Mason 
+                </option>
+                <option>
+                    Christophe_Geuens 
+                </option>
+                <option>
+                    Daanish_Bambery 
+                </option>
+                <option>
+                    Daniil_Kedrinski 
+                </option>
+                <option>
+                    Fabio_Kerstens 
+                </option>
+                <option>
+                    Lukas_Welzel 
+                </option>
+                <option>
+                    Michael_Hörmann 
+                </option>
+                <option>
+                    Halil_Demiralan 
+                </option>
+                <option>
+                    Johannes_Benning 
+                </option>
+                <option>
+                    Marius_Hahn 
+                </option>
+                <option>
+                    Dan_Thilderkvist 
+                </option>
+                <option>
+                    Dragos_Varsescu 
+                </option>
+                <option>
+                    Sebastian_Schaeffler 
+                </option>
+                <option>
+                    Marios_Karanikolidis 
+                </option>
+                <option>
+                    Alan_Rochford 
+                </option>
+                <option>
+                    Lucian-Mircea_Grec 
+                </option>
+                <option>
+                    Kevin_Eppenga 
+                </option>
+                <option>
+                    Juan_R._Llobet 
+                </option>
+                <option>
+                    Amir_Ibrahim 
+                </option>
+                <option>
+                    Calvin_Füller 
+                </option>
+                <option>
+                    Jean_Labuschagne 
+                </option>
+                <option>
+                    Robin_Scholtes 
+                </option>
+                <option>
+                    Alan_Saucedo 
+                </option>
+                <option>
+                    Julian_Erdle 
+                </option>
+                <option>
+                    Francesc_Betorz 
+                </option>
+                <option>
+                    Malte_Hauck 
+                </option>
+                <option>
+                    Vasyl_Kashevko 
+                </option>
+                <option>
+                    Eric_Brunner 
+                </option>
+                <option>
+                    Nick_Stein 
+                </option>
+                <option>
+                    Karina_Sapelnikova 
+                </option>
+                <option>
+                    Jeije_Van_den_Wijngaart 
+                </option>
+                <option>
+                    Nadine_Steck 
+                </option>
+                <option>
+                    Omar_Abrahams
+                </option>
+                <option>
+                    Emmanuel_Telmar
+                </option>
+                <option>
+                    Victor_Covasan
+                </option>
+                <option>
+                    Jakob_Habermann
+                </option>
+                <option>
+                    Jannis_Bobinger
+                </option>
+                <option>
+                    Ibrahim_Ata
+                </option>
+                <option>
+                    Veronika_Pröller
+                </option>
+                <option>
+                    Tiago_Spieß
+                </option>
+                <option>
+                    Adrian_Lorenz
+                </option>
+                <option>
+                    Patrick_Wagner
+                </option>
+                <option>
+                    Thomas_Britting
+                </option>
+                <option>
+                    Filipe_Valentim
+                </option>
+                <option>
+                    Moritz_Baur
+                </option>
+                <option>
+                    Jörn_Spurmann
+                </option>
+                <option>
+                    Nian_Fuls
+                </option>
+                <option>
+                    Alexander_Polidar
+                </option>
+                <option>
+                    Jonas_Weis
+                </option>
+                <option>
+                    Mario_Araujo
+                </option>
+                <option>
+                    Sebastian_Reiter
+                </option>
+                <option>
+                    Trivendra_Kulhare
+                </option>
+                <option>
+                    Nicholas_Tegg
+                </option>
+                <option>
+                    Rolf_Wubben
+                </option>
+                <option>
+                    Lars_van_der_Heijden
+                </option>
+                <option>
+                    Pjotr_Lengkeek
+                </option>
+                <option>
+                    Ilker_Yasar
+                </option>
+                <option>
+                    Kilian_Reutter
+                </option>
+                <option>
+                    Mathieu_Rayer
+                </option>
+                <option>
+                    Thomas_Barouh
+                </option>
+                <option>
+                    Maximilian_Erhardt
+                </option>
+                <option>
+                    Samuel_Leitenmeier 
+                </option>
+                <option>
+                    Brunno_B._Vasques 
+                </option>
+                <option>
+                    Robin_Duhnsen 
+                </option>
+                <option>
+                    Amr_Ibrahim 
+                </option>
+                <option>
+                    Jaime_Aguirre 
+                </option>
+                <option>
+                    Andreas_Engel 
+                </option>
+                <option>
+                    Emily_Seeberg 
+                </option>
+                <option>
+                    Beatriz_Oliveira
+                </option>
+                <option>
+                    Rishabh_Yadav
+                </option>
+                <option>
+                    Virgile_Gautier
+                </option>
+                <option>
+                    Maximilian_Koch
+                </option>
+                <option>
+                    Sandro_Schönhoff
+                </option>
+                <option>
+                    David_Maiden 
+                </option>
+                <option>
+                    Navin_Subramanian  
+                </option>
+                <option>
+                    Sydney_Dupasquier  
+                </option>
+                <option>
+                    Lukas_Walter  
+                </option>
+                <option>
+                    Shrinivas_Iyengar   
+                </option>
+                <option>
+                    Atef_Ghalayini    
+                </option>
+                <option>
+                    Julie_Letoile     
+                </option>
+                <option>
+                    Titto_Ephraim_Methew     
+                </option>
+                <option>
+                    Oliver_Hitchens     
+                </option>
+                <option>
+                    Andreas_Tumbrink     
+                </option>
+                <option>
+                    Alberto_Progida      
+                </option>
+                <option>
+                    Geoffroy_de_Dinechin      
+                </option>
+                <option>
+                    Elia_Poli      
+                </option>
+                <option>
+                    Léo_Bulckaen      
+                </option>
+                <option>
+                    Gerhard_Becker      
+                </option>
+                <option>
+                    Philip_Tzonev      
+                </option>
+                <option>
+                    Ines_Pereirinha      
+                </option>
+                <option>
+                    Yannick_Eydner      
+                </option>
+                <option>
+                    Mihir_Patwardhan      
+                </option>
+                <option>
+                    Marco_Desiderio      
+                </option>
+                <option>
+                    Giulio_Pacifici      
+                </option>
+                <option>
+                    Almero_Gerber      
+                </option>
+                <option>
+                    Tobias_Drexl      
+                </option>
+                <option>
+                    Ramzi_Aouimeur      
+                </option>
+                <option>
+                    Thomas_Wüthrich      
+                </option>
+                <option>
+                    Matthias_Jacoby      
+                </option>
+                <option>
+                    Jyotiben_Tiwari      
+                </option>
+                <option>
+                    Peter_Nothofer     
+                </option>
+                <option>
+                    Prathamesh_Malpathak     
+                </option>
+                <option>
+                    Julian_Busch    
+                </option>
+                <option>
+                    Jude_Sudario    
+                </option>
+                <option>
+                    Zeljko_Pavlovic    
+                </option>
+                <option>
+                    Jonas_Kellner     
+                </option>
+                <option>
+                    Pierre_Groslambert     
+                </option>
+                <option>
+                    Melanie_Wullaert     
+                </option>
+                <option>
+                    Olgierd_Cichorek     
+                </option>
+                <option>
+                    Philipp_Becker     
+                </option>
+                <option>
+                    Florian_Eisele     
+                </option>
+                <option>
+                    Sven_Deist     
+                </option>
+                <option>
+                    Calvin_Hooton     
+                </option>
+                <option>
+                    Monica_Arizaga     
+                </option>
+                <option>
+                    Isaac_Lopez     
+                </option>
+                <option>
+                    Julian_Rimer     
+                </option>
+                <option>
+                    Andreas_Stark     
+                </option>
+                <option>
+                    Nitin_Kumar     
+                </option>
+                <option>
+                    Nicola_Zappacosta     
+                </option>
+                <option>
+                    Jacopo_Irone     
+                </option>
+                <option>
+                    Dmitrii_Matias     
+                </option>
+                <option>
+                    Adem_Tosun     
+                </option>
+                <option>
+                    Stefano_Centorame     
+                </option>
+                <option>
+                    Tibor_Völcker     
+                </option>
+                <option>
+                    Joris_Kievits     
+                </option>
+                <option>
+                    Paul_Haufe     
+                </option>
+                <option>
+                    Jonathan_Panchyrz     
+                </option>
+                <option>
+                    Karl_Fuchs     
+                </option>
+                <option>
+                    Daniel_Kussner     
+                </option>
+                <option>
+                    Naveen_Gunasekaran     
+                </option>
+                <option>
+                    Stefan_Panajotovic     
+                </option>
+                <option>
+                    Fabian_Braun     
+                </option>
+                <option>
+                    Maximilian_Pfohl     
+                </option>
+                <option>
+                    Jacob_Lawson     
+                </option>
+                <option>
+                    Anton_Liegert     
+                </option>
+                <option>
+                    Sammy_Ma     
+                </option>
+                <option>
+                    Praveen_Vasan    
+                </option>
+                <option>
+                    Laura_Soldo   
+                </option>
+                <option>
+                    Thorben_Schmitz    
+                </option>
+
+
+
+            </datalist>
+             
+            <td><input type = "submit"  class = "btn btn-success" value = "search" name="push"> </td>
+           
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td>      </td>
+            <td>      </td>
+            <td>      </td>
+            
+            <td> Name: </td>
+            <td> <input type = "text" class="form-control" value =  
+                                               {% for x in data %}
+                                                {% if forloop.last %}
+                                                {{ x.empname}}
+                                                 {% endif %}
+                                                 {% endfor %}
+                                                  name = "empname" readonly></td>
+                                                
+                                                 <td>      </td>
+                                                 <td>      </td>
+                                                 <td>      </td>
+            <td> Current Week: </td>
+            <td><input type = "number" class="form-control" value = {% for x in data %}
+                                               {% if forloop.last %}
+                                               {{ x.currentweek }}
+                                                    {% endif %}
+                                                    {% endfor %} name = "currentweek"> </td>
+               
+            <td><input type = "submit" class = "btn btn-success" value = "submit"  name ="submit"> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+           
+
+            <td><input type = "submit" class = "btn btn-success" value = "&#11123"   name ="dump"> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td><input type = "password" class="form-control" placeholder="Enter Password"  name = "password"> </td>
+            <td><input type = "submit" class = "btn btn-success" value = "Database  &#11123"  name ="dump2"> </td>
+        </table>
+            
+        </tr>
+        </table>
+    </div>
+        </form>
+        </p>    
+    </br>
+    <div style = " height: 400px; width: 1500px; overflow: auto; "  id= "fixTableHead">
+    <table border =1  class = "table table-hover table-sm table-bordered" >
+      
+        <thead >
+            <tr>
+                <th style = "position:sticky; top: 0; background:#eee; "> System Code</th>
+                <th style = "position:sticky; top: 0; background:#eee;"> Department</th>
+                <th style = "position:sticky; top: 0; background:#eee;"> Development Phase</th>   
+                <th style = "position:sticky; top: 0; background:#eee;"> Project</th> 
+
+
+                <th style = "position:sticky; top: 0; background:#eee; "> {{day1}}</th>
+                <th style = "position:sticky; top: 0; background:#eee; ">{{day2}}</th>
+                <th style = "position:sticky; top: 0; background:#eee;"> {{day3}} </th>
+                <th style = "position:sticky; top: 0; background:#eee;">{{day4}} </th>
+                <th style = "position:sticky; top: 0; background:#eee;"> {{day5}}</th>
+                <th style = "position:sticky; top: 0; background:#eee; ">{{day6}} </th>
+                <th style = "position:sticky; top: 0; background:#eee; "> Delete </th>
+                         
+            </tr>
+        </thead>
+
+           
+            {% for element in unique_syscode %}  
+            {% for record in data %}
+        <tbody> 
+        <tr>   
+           
+              
+              
+               {% if element == record.systemcode1 and  element != null %}
+
+              <td> {{record.systemcode1}} </td>
+              <td>{{record.department}}</td>
+              <td>{{ record.development_phase1}}</td>
+              <td> {{ record.project1}} </td>
+              <td>{{ record.time_worked1}}</td>
+
+               {% if record.systemcode6 != null and record.systemcode6 == record.systemcode1  %}
+
+               {% if record.systemcode2 == record.systemcode1 %}
+               <td> {{ record.time_worked2}} </td>
+                {% else %}
+                <td> </td>
+                {% endif %}
+
+                {% if record.systemcode3 == record.systemcode1 %}
+               <td> {{ record.time_worked3}} </td>
+                {% else %}
+                <td> </td>
+                {% endif %}
+
+                {% if record.systemcode4 == record.systemcode1 %}
+               <td> {{ record.time_worked4}} </td>
+                {% else %}
+                <td> </td>
+                {% endif %}
+                {% if record.systemcode5 == record.systemcode1 %}
+               <td> {{ record.time_worked5}} </td>
+                {% else %}
+                <td> </td>
+                {% endif %}
+               <td> {{record.time_worked6}} </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+
+                {% elif record.systemcode5 != null and record.systemcode5 == record.systemcode1  %}
+
+                {% if record.systemcode2 == record.systemcode1 %}
+                <td> {{ record.time_worked2}} </td>
+                 {% else %}
+                 <td> </td>
+                 {% endif %}
+ 
+                 {% if record.systemcode3 == record.systemcode1 %}
+                <td> {{ record.time_worked3}} </td>
+                 {% else %}
+                 <td> </td>
+                 {% endif %}
+ 
+                 {% if record.systemcode4 == record.systemcode1 %}
+                <td> {{ record.time_worked4}} </td>
+                 {% else %}
+                 <td> </td>
+                 {% endif %}               
+                <td> {{record.time_worked5}} </td>
+                <td> </td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+
+
+                 {% elif record.systemcode4 != null and record.systemcode4 == record.systemcode1  %}
+
+                 {% if record.systemcode2 == record.systemcode1 %}
+                 <td> {{ record.time_worked2}} </td>
+                  {% else %}
+                  <td> </td>
+                  {% endif %}
+  
+                  {% if record.systemcode3 == record.systemcode1 %}
+                 <td> {{ record.time_worked3}} </td>
+                  {% else %}
+                  <td> </td>
+                  {% endif %}              
+                 <td> {{record.time_worked4}} </td>
+                 <td> </td>
+                 <td> </td>
+                 {% if record.id != null %}
+                 <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                  {% endif %}
+
+                  {% elif record.systemcode3 != null and record.systemcode3 == record.systemcode1  %}
+
+                  {% if record.systemcode2 == record.systemcode1 %}
+                  <td> {{ record.time_worked2}} </td>
+                   {% else %}
+                   <td> </td>
+                   {% endif %}             
+                  <td> {{record.time_worked3}} </td>
+               <td> </td>
+               <td> </td>
+               <td> </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+
+               {% elif record.systemcode2 != null and record.systemcode2 == record.systemcode1%}
+               <td>{{ record.time_worked2}}</td>
+               <td> </td>
+               <td> </td>
+               <td> </td>
+               <td> </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+
+               {% else %}
+               <td> </td>
+               <td> </td>
+               <td> </td>
+               <td> </td>
+               <td> </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+               {% endif %}
+              
+
+
+               {% elif element == record.systemcode2  and  element != null  %}
+
+              <td> {{record.systemcode2}} </td>
+              <td>{{record.department}}</td>
+              <td>{{ record.development_phase2}}</td>
+              <td> {{ record.project2}} </td>
+              <td>   </td>
+              <td>{{ record.time_worked2}}</td>
+
+              {% if record.systemcode6 != null and record.systemcode6 == record.systemcode2  %}
+
+              {% if record.systemcode3 == record.systemcode2 %}
+              <td> {{ record.time_worked3}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+
+               {% if record.systemcode4 == record.systemcode2 %}
+              <td> {{ record.time_worked4}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+
+               {% if record.systemcode5 == record.systemcode2 %}
+              <td> {{ record.time_worked5}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+              <td> {{record.time_worked6}} </td>
+              {% if record.id != null %}
+              <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+               {% endif %}
+
+               {% elif record.systemcode5 != null and record.systemcode5 == record.systemcode2  %}
+
+               {% if record.systemcode3 == record.systemcode2 %}
+              <td> {{ record.time_worked3}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+
+               {% if record.systemcode4 == record.systemcode2 %}
+              <td> {{ record.time_worked4}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+               <td> {{record.time_worked5}} </td>
+               <td> </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+
+
+                {% elif record.systemcode4 != null and record.systemcode4 == record.systemcode2  %}
+
+                {% if record.systemcode3 == record.systemcode2 %}
+              <td> {{ record.time_worked3}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+
+               <td> {{record.time_worked4}} </td>
+               <td> </td>
+               <td> </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+
+                 {% elif record.systemcode3 != null and record.systemcode3 == record.systemcode2  %}            
+                 <td> {{record.time_worked3}} </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              {% if record.id != null %}
+              <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+               {% endif %}
+              {% else %}
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              
+              {% if record.id != null %}
+              <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+               {% endif %}
+              {% endif %}
+               
+
+
+               {% elif element == record.systemcode3 and  element != null %}
+
+               <td> {{record.systemcode3}} </td>
+               <td>{{record.department}}</td>
+               <td>{{ record.development_phase3}}</td>
+               <td> {{ record.project3}} </td>
+               <td>   </td>
+               <td>   </td>
+               <td>{{ record.time_worked3}}</td>
+ 
+                {% if record.systemcode6 != null and record.systemcode6 == record.systemcode3 %}
+
+                {% if record.systemcode4 == record.systemcode3 %}
+              <td> {{ record.time_worked4}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+
+               {% if record.systemcode5 == record.systemcode3 %}
+              <td> {{ record.time_worked5}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+                <td>{{ record.time_worked6}}</td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+ 
+                {% elif record.systemcode5 != null and record.systemcode5 == record.systemcode3 %}
+                {% if record.systemcode4 == record.systemcode3 %}
+              <td> {{ record.time_worked4}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+                <td>{{ record.time_worked5}}</td>
+                <td> </td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+ 
+                {% elif record.systemcode4 != null and record.systemcode4 == record.systemcode3 %}
+                <td>{{ record.time_worked4}}</td>
+                <td> </td>
+                <td> </td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+
+                {% else %}
+               <td> </td>
+               <td> </td>
+               <td> </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+                {% endif %}
+
+
+                   {% elif element == record.systemcode4 and element != null  %}
+
+               <td> {{record.systemcode4}} </td>
+               <td>{{record.department}}</td>
+               <td>{{ record.development_phase4}}</td>
+               <td> {{ record.project4}} </td>
+               <td>   </td>
+               <td>   </td>
+               <td>   </td>
+
+               <td>{{ record.time_worked4}}</td>
+ 
+                {% if record.systemcode6 != null and record.systemcode6 == record.systemcode4  %}
+
+                {% if record.systemcode5 == record.systemcode4 %}
+              <td> {{ record.time_worked5}} </td>
+               {% else %}
+               <td> </td>
+               {% endif %}
+                <td>{{ record.time_worked6}}</td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+
+                {% elif record.systemcode5 != null and record.systemcode5 == record.systemcode4 %}
+                <td>{{ record.time_worked5}}</td>
+                <td> </td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+
+                {% else %}
+               <td> </td>
+               <td> </td>
+               {% if record.id != null %}
+               <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                {% endif %}
+               
+                {% endif %}
+
+
+
+
+            {% elif element == record.systemcode5 and  element != null %}
+
+               <td> {{record.systemcode5}} </td>
+               <td>{{record.department}}</td>
+               <td>{{ record.development_phase5}}</td>
+               <td> {{ record.project5}} </td>
+               <td>   </td>
+               <td>   </td>
+               <td>   </td>
+               <td>   </td>
+
+               <td>{{ record.time_worked5}}</td>
+ 
+                {% if record.systemcode6 != null and record.systemcode6 == record.systemcode5 %}
+                <td>{{ record.time_worked6}}</td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+                {% else %}
+                <td> </td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+                {% endif %}
+                
+             
+               
+
+
+
+                {% elif element == record.systemcode6 and element != null  %}
+
+                <td> {{record.systemcode6}} </td>
+                <td>{{record.department}}</td>
+                <td>{{ record.development_phase6}}</td>
+                <td> {{ record.project6}} </td>
+                <td>   </td>
+                <td>   </td>
+                <td>   </td>
+                <td>   </td>
+                <td>   </td>
+ 
+                <td>{{ record.time_worked6}}</td>
+                {% if record.id != null %}
+                <td><a href = "Delete_sys/{{record.id}}/{{record.empname}}/{{record.currentweek}}" onclick = "return confirmation2();"> - </a></td> 
+                 {% endif %}
+                {% endif %}
+        
+                    
+                    
+        </tr>
+        
+        {% endfor %}
+        {% endfor %}
+
+        <tr>
+
+        </tr>
+    </tbody> 
+    <tfoot>
+     <tr style= "font-weight:bold; position:sticky; bottom: 0; background:#eee;"> 
+        <th colspan = '4' style = "position:sticky; top: 0; background:#eee; "> Total </th>
+            <th style = "position:sticky; bottom: 0; background:#eee; ">{{ Total_tw1 }}</th>
+            <th style = "position:sticky; bottom: 0; background:#eee; ">{{ Total_tw2 }}</th>
+            <th style = "position:sticky; bottom: 0; background:#eee; ">{{ Total_tw3 }}</th>
+            <th style = "position:sticky; bottom: 0; background:#eee; ">{{ Total_tw4 }}</th>
+            <th style = "position:sticky; bottom: 0; background:#eee; ">{{ Total_tw5 }}</th>
+            <th style = "position:sticky; bottom: 0; background:#eee; ">{{ Total_tw6 }}</th>
+            <th style = "position:sticky; bottom: 0; background:#eee; "> </th>
+            
+    
+    
+    </tr>
+</tfoot>
+</table>
+
+    </div>
+
+
+<table>   
+    <tr>
+        <div align = center>{% if messages %}
+            {% for mess in messages %}
+            <b style ="color:green">{{mess}}</b>
+            {% endfor %}
+            {% endif %} </div>
+        </div>
+    </tr> 
+</br>
+    <tr>
+    <td> <a class= "link1" href = "{% url 'firstpage' %}" > &#x1F3E0 </a>  </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td>  </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td><a class="link2" href = "Delete/{{currentweek}}" onclick = "return confirmation ();">  Delete </a></td>
+</tr>
+</table>
+    
+</center>
+
+
+</body>
+</html>

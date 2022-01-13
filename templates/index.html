@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <title>Time Tracking Tool</title>
+</head>
+<body style="background-color:rgb(71, 199, 241);">
+<center>
+    <h1> Work Details </h1>
+    <hr/>
+    <a href = "{% url 'insertrecord' %}">Enter New Record </a>
+    <div style = " height: 200px;  overflow: auto;">
+    <table border =1 >
+        <tr>
+            <th>Employee Name</th>
+            <th>Department</th>
+            <th>Current Week</th>
+            <th>System Code</th>
+            <th>Development phase</th>
+            <th>Project</th>
+            <th>Day 1</th>
+            <th>Time</th>
+            <th>Day 2</th>
+            <th>Time</th>
+            <th>Day 3</th>
+            <th>Time</th>
+            <th>Day 4</th>
+            <th>Time</th>
+            <th>Day 5</th>
+            <th>Time</th>
+            <th>Day 6</th>
+            <th>Time</th>
+            <th>Day 7</th>
+            <th>Time</th>
+        </tr>
+        {% for records in data %}
+        <tr>
+            <td>{{records.empname}}</td>
+            <td>{{records.department}}</td>
+            <td>{{records.currentweek}}</td>
+            <td>{{records.systemcode}}</td>
+            <td>{{records.development_phase}}</td>
+            <td>{{records.project}}</td>
+            <td>{{records.day1}}</td>
+            <td>{{records.time_worked1}}</td>
+            <td>{{records.day2}}</td>
+            <td>{{records.time_worked2}}</td>
+            <td>{{records.day3}}</td>
+            <td>{{records.time_worked3}}</td>
+            <td>{{records.day4}}</td>
+            <td>{{records.time_worked4}}</td>
+            <td>{{records.day5}}</td>
+            <td>{{records.time_worked5}}</td>
+            <td>{{records.day6}}</td>
+            <td>{{records.time_worked6}}</td>
+            <td>{{records.day7}}</td>
+            <td>{{records.time_worked7}}</td>  
+        </tr>
+        {% endfor %}
+
+    </table>
+    </div>
+</center>
+</body>
+</html>
