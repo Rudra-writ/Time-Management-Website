@@ -13,6 +13,70 @@ def showhistory(request):
     showall = timeTracking.objects.all()
     return render(request, 'index.html', {"data": showall})
 
+def Days():
+                     now = datetime.datetime.now()
+                     today = (now.strftime("%A"))
+                     week = datetime.datetime.now().isocalendar()[1]
+                     if (today == "Monday"):
+                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
+                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
+                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
+                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
+
+                     elif (today == "Tuesday"):
+                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
+                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
+                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
+
+                     elif (today == "Wednesday"):
+                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
+                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
+
+                     elif (today == "Thursday"):
+                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
+                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
+                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                
+                     elif (today == "Friday"):
+                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
+                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
+                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
+                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+
+                     elif (today == "Saturday"):
+                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
+                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
+                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
+                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
+                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
+                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
+                
+                     else:
+
+                        first_day = None
+                        second_day = None
+                        third_day = None
+                        fourth_day = None
+                        fifth_day = None
+                        sixth_day = None
+                     return first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today
+
+    
+
 def insertrecord(request):
     if (request.method == 'GET'):
         objectall = timeTracking.objects.all()
@@ -137,127 +201,13 @@ def insertrecord(request):
                      saverecord.systemcode3 = None
                      saverecord.systemcode4 = None
                      saverecord.systemcode5 = None
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     week = datetime.datetime.now().isocalendar()[1]
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
+                    
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      messages.success(request, "Error: Please make sure the Department,Development phase, Project and System Codes are selected from the list and the dates belong to the current week!!")
                      return render(request, 'insert.html', {"data": objectall, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
                  
-                 now = datetime.datetime.now()
-                 today = (now.strftime("%A"))
-                 week = datetime.datetime.now().isocalendar()[1]
-                 if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                 elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                 elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                 elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                 elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                 elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                 else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
+                 
+                 first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                  if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
                     saverecord.save()
                     messages.success(request, "Data saved successfully !!")              
@@ -267,82 +217,33 @@ def insertrecord(request):
                      return render(request, 'insert.html', {"data": objectall, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
     
         else:   
-                now = datetime.datetime.now()
-                today = (now.strftime("%A"))
-                week = datetime.datetime.now().isocalendar()[1]
-                if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
                 
-                elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
-                
+                first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                 messages.success(request, "One of the mandatory fields is missing...")
                 return render(request, 'insert.html', {"data": objectall, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
-                
+    else:
+        return render(request, 'insert.html')
+
+
+
+
+
 def firstpage(request):
-    if (request.method == 'GET'):
+    if (request.method == 'POST'):
         
-       if request.GET.get('name'):
-            thisname = request.GET.get('name')
+       if request.POST.get('name'):
+            thisname = request.POST.get('name')
             new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [thisname])
 
-       elif request.GET.get('employeename'):
-            thisname = request.GET.get('employeename')
+       elif request.POST.get('employeename'):
+            thisname = request.POST.get('employeename')
             objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [thisname])
             return render(request, 'index.html', {"data" :objects})
        else:
             return render(request, 'firstpage.html' )
+    else:
+        return render(request, 'firstpage.html' )
+
             
 def insert_record(request):
    
@@ -395,75 +296,14 @@ def insert_record(request):
             if (request.GET.get('empname') in timeTracking.objects.values_list('empname', flat=True)):
                 thisname = request.GET.get('empname')
                 objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [thisname])
-                now = datetime.datetime.now()
-                today = (now.strftime("%A"))
-                week = datetime.datetime.now().isocalendar()[1]
-                if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
                 
-                elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
-
-
-
-
+                first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                 return render(request, 'insert_record.html', {"name": thisname, "data": objects, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
             else:
                  messages.success(request, "Name not found in the database!! Please register first. Hint: Make sure to pick your name from the list !!")
                  return render(request, 'insert_record.html')
         
-        elif ( request.GET.get('currentweek') and not (request.GET.get('add1') or request.GET.get('add2') or request.GET.get('add3') or request.GET.get('add4') or request.GET.get('add5') or request.GET.get('add6') ) and not (request.GET.get('systemcode1') or request.GET.get('systemcode2') or request.GET.get('systemcode3') or request.GET.get('systemcode4') or request.GET.get('systemcode5') or request.GET.get('systemcode6')) and not (request.GET.get('time_worked1') or request.GET.get('time_worked2') or request.GET.get('time_worked3') or request.GET.get('time_worked4') or request.GET.get('time_worked5') or request.GET.get('time_worked6'))):
+        elif ( request.GET.get('currentweek') and request.GET.get('systemcode1') == '' and  request.GET.get('systemcode2') == '' and  request.GET.get('systemcode3') == '' and  request.GET.get('systemcode4') == ''  and  request.GET.get('systemcode5') == '' and  request.GET.get('systemcode6') == ''):
            if(request.GET.get('empname') and request.GET.get('department') and request.GET.get('currentweek')):
                  thisname = request.GET.get('empname')
                  new_week = int(request.GET.get('currentweek'))
@@ -482,65 +322,8 @@ def insert_record(request):
            else:
                 thisname = request.GET.get('empname')
                 objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [thisname])
-                now = datetime.datetime.now()
-                today = (now.strftime("%A"))
-                week = datetime.datetime.now().isocalendar()[1]
-                if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
+               
+                first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                 messages.success(request, "Submit your name first.")
                 return render(request, 'insert_record.html', {"name": thisname, "data": objects, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
 
@@ -622,13 +405,6 @@ def insert_record(request):
                     if (t.time_worked6 != None):
                         Total_tw6 = t.time_worked6 + Total_tw6
 
-
-
-
-
-
-
-                
                  
                  saverecord = timeTracking()
                  saverecord.empname = request.GET.get('empname')
@@ -729,67 +505,7 @@ def insert_record(request):
                      saverecord.systemcode5 = None
 
 
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     week = datetime.datetime.now().isocalendar()[1]
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
-
-
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      if ( request.GET.get('time_worked1') != '' and ((int(request.GET.get('time_worked1')) + Total_tw1) >= 10)) or (  request.GET.get('time_worked2') != ''  and ((int(request.GET.get('time_worked2')) + Total_tw2) >= 10)) or ( request.GET.get('time_worked3') != '' and ((int (request.GET.get('time_worked3')) + Total_tw3) >= 10)) or (  request.GET.get('time_worked4') != '' and ((int (request.GET.get('time_worked4')) + Total_tw4) >= 10)) or (request.GET.get('time_worked5') != '' and ((int (request.GET.get('time_worked5')) + Total_tw5) >= 10)) or ( request.GET.get('time_worked6') != ''  and ((int (request.GET.get('time_worked6')) + Total_tw6) >= 10)):
                         messages.success(request, "You cannot work for more than 10 hours on a certain day. Please go home :) ")
                         new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
@@ -804,67 +520,8 @@ def insert_record(request):
                         new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
                         return render(request, 'insert_record.html', {"name": empname, "data": new_objects, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
 
-                    
-                 now = datetime.datetime.now()
-                 today = (now.strftime("%A"))
-                 week = datetime.datetime.now().isocalendar()[1]
-                 if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                 elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                 elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                 elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                 elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                 elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                 else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
-
+               
+                 first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                  if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
                     saverecord.save()
                     messages.success(request, "Data saved successfully !!")
@@ -885,68 +542,7 @@ def insert_record(request):
           if ((request.GET.get('systemcode1') != '' and request.GET.get('systemcode1') not in lists) or ( request.GET.get('systemcode2') != '' and request.GET.get('systemcode2') not in lists) or  ( request.GET.get('systemcode3') != '' and request.GET.get('systemcode3') not in lists) or ( request.GET.get('systemcode4') != '' and request.GET.get('systemcode4') not in lists) or ( request.GET.get('systemcode5') != '' and request.GET.get('systemcode5') not in lists) or ( request.GET.get('systemcode6') != '' and request.GET.get('systemcode6') not in lists)):
 
 
-            now = datetime.datetime.now()
-            today = (now.strftime("%A"))
-            week = datetime.datetime.now().isocalendar()[1]
-            if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-            elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-            elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-            elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-            elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-            elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-            else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
-
-
-
+            first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
             empname = request.GET.get('empname')
             messages.success(request, "Invalid system code, Please select one from the list!!")
             new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
@@ -955,67 +551,9 @@ def insert_record(request):
           
           elif ((request.GET.get('development_phase1') != '' and request.GET.get('development_phase1') not in d_phases ) or (request.GET.get('project1') != '' and  request.GET.get('project1') not in projects )) or  ((request.GET.get('development_phase2') != '' and request.GET.get('development_phase2') not in d_phases ) or (request.GET.get('project2') != '' and  request.GET.get('project2') not in projects )) or ((request.GET.get('development_phase3') != '' and request.GET.get('development_phase3') not in d_phases ) or (request.GET.get('project3') != '' and  request.GET.get('project3') not in projects )) or ((request.GET.get('development_phase4') != '' and request.GET.get('development_phase4') not in d_phases ) or (request.GET.get('project4') != '' and  request.GET.get('project4') not in projects )) or ((request.GET.get('development_phase5') != '' and request.GET.get('development_phase5') not in d_phases ) or (request.GET.get('project5') != '' and  request.GET.get('project5') not in projects )) or ((request.GET.get('development_phase6') != '' and request.GET.get('development_phase6') not in d_phases ) or (request.GET.get('project6') != '' and  request.GET.get('project6') not in projects )):
               
-            now = datetime.datetime.now()
-            today = (now.strftime("%A"))
-            week = datetime.datetime.now().isocalendar()[1]
-            if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
+            
 
-            elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-            elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-            elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-            elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-            elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-            else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
-
-
+            first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
 
             empname = request.GET.get('empname')
             messages.success(request, "Invalid Development phase or Project!! Please leave them null or select from the list. ")
@@ -1025,68 +563,8 @@ def insert_record(request):
 
 
           elif ( request.GET.get('time_worked1') != '' and ((int(request.GET.get('time_worked1')) + Total_tw1) >= 10)) or (  request.GET.get('time_worked2') != ''  and ((int(request.GET.get('time_worked2')) + Total_tw2) >= 10)) or ( request.GET.get('time_worked3') != '' and ((int (request.GET.get('time_worked3')) + Total_tw3) >= 10)) or (  request.GET.get('time_worked4') != '' and ((int (request.GET.get('time_worked4')) + Total_tw4) >= 10)) or (request.GET.get('time_worked5') != '' and ((int (request.GET.get('time_worked5')) + Total_tw5) >= 10)) or ( request.GET.get('time_worked6') != ''  and ((int (request.GET.get('time_worked6')) + Total_tw6) >= 10)):
-            now = datetime.datetime.now()
-            today = (now.strftime("%A"))
-            week = datetime.datetime.now().isocalendar()[1]
-            if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-            elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-            elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-            elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-            elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-            elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-            else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
-
-
-
+           
+            first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
             empname = request.GET.get('empname')
             messages.success(request, "You cannot work for more than 10 hours on a certain day. Please go home :) ")
             new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
@@ -1150,67 +628,8 @@ def insert_record(request):
                  
            
             if (request.GET.get('systemcode1') == request.GET.get('systemcode2') and request.GET.get('development_phase1') != request.GET.get('development_phase2')) or (request.GET.get('systemcode1') == request.GET.get('systemcode3') and request.GET.get('development_phase1') != request.GET.get('development_phase3'))  or (request.GET.get('systemcode1') == request.GET.get('systemcode4') and request.GET.get('development_phase1') != request.GET.get('development_phase4')) or (request.GET.get('systemcode1') == request.GET.get('systemcode5') and request.GET.get('development_phase1') != request.GET.get('development_phase5'))  or (request.GET.get('systemcode1') == request.GET.get('systemcode6') and request.GET.get('development_phase1') != request.GET.get('development_phase6')): 
-                     week = datetime.datetime.now().isocalendar()[1]
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
-
-
+                    
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
 
                         messages.success(request, "Please fill the system codes with same development phase or use the + option to enter individual records...")
@@ -1225,67 +644,7 @@ def insert_record(request):
 
             elif   (request.GET.get('systemcode2') == request.GET.get('systemcode3') and request.GET.get('development_phase2') != request.GET.get('development_phase3'))  or (request.GET.get('systemcode2') == request.GET.get('systemcode4') and request.GET.get('development_phase2') != request.GET.get('development_phase4')) or (request.GET.get('systemcode2') == request.GET.get('systemcode5') and request.GET.get('development_phase2') != request.GET.get('development_phase5'))  or (request.GET.get('systemcode2') == request.GET.get('systemcode6') and request.GET.get('development_phase2') != request.GET.get('development_phase6')):
 
-                     week = datetime.datetime.now().isocalendar()[1]
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
-
-
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
 
                         messages.success(request, " To use the SEND button, Please fill the system codes with same development phase or use the + buttons to enter individual records...")
@@ -1299,67 +658,7 @@ def insert_record(request):
                         return render(request, 'insert_record.html', {"name": empname, "data": new_objects,"first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
             elif   (request.GET.get('systemcode3') == request.GET.get('systemcode4') and request.GET.get('development_phase3') != request.GET.get('development_phase4')) or (request.GET.get('systemcode3') == request.GET.get('systemcode5') and request.GET.get('development_phase3') != request.GET.get('development_phase5'))  or (request.GET.get('systemcode3') == request.GET.get('systemcode6') and request.GET.get('development_phase3') != request.GET.get('development_phase6')):
 
-                     week = datetime.datetime.now().isocalendar()[1]
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
-
-
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
 
                         messages.success(request, " To use the SEND button, Please fill the system codes with same development phase or use the + buttons to enter individual records...")
@@ -1374,67 +673,7 @@ def insert_record(request):
 
             elif  (request.GET.get('systemcode4') == request.GET.get('systemcode5') and request.GET.get('development_phase4') != request.GET.get('development_phase5'))  or (request.GET.get('systemcode4') == request.GET.get('systemcode6') and request.GET.get('development_phase4') != request.GET.get('development_phase6')):
 
-                     week = datetime.datetime.now().isocalendar()[1]
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
-
-
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
 
                         messages.success(request, " To use the SEND button, Please fill the system codes with same development phase or use the + buttons to enter individual records...")
@@ -1449,67 +688,7 @@ def insert_record(request):
 
             elif  (request.GET.get('systemcode5') == request.GET.get('systemcode6') and request.GET.get('development_phase5') != request.GET.get('development_phase6')):
 
-                     week = datetime.datetime.now().isocalendar()[1]
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
-
-
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
 
                         messages.success(request, " To use the SEND button, Please fill the system codes with same development phase or use the + buttons to enter individual records...")
@@ -1521,15 +700,6 @@ def insert_record(request):
                         empname = request.GET.get('empname')
                         new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
                         return render(request, 'insert_record.html', {"name": empname, "data": new_objects,"first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
-
-      
-
-
-
-
-
-
-
 
 
 
@@ -1986,69 +1156,7 @@ def insert_record(request):
                      saverecord.systemcode4 = None
                      saverecord.systemcode5 = None
 
-
-
-                     week = datetime.datetime.now().isocalendar()[1]
-                     now = datetime.datetime.now()
-                     today = (now.strftime("%A"))
-                     if (today == "Monday"):
-                        first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-                     elif (today == "Tuesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-                     elif (today == "Wednesday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-                     elif (today == "Thursday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-                     elif (today == "Friday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                        sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-                     elif (today == "Saturday"):
-                        first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                        second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                        third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                        fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                        fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                        sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-                     else:
-
-                        first_day = None
-                        second_day = None
-                        third_day = None
-                        fourth_day = None
-                        fifth_day = None
-                        sixth_day = None
-
-
+                     first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
                      if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
 
                         messages.success(request, "You are trying to use the Send button for a single record. Please use the + button")
@@ -2061,67 +1169,7 @@ def insert_record(request):
                         new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
                         return render(request, 'insert_record.html', {"name": empname, "data": new_objects,"first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
 
-            week = datetime.datetime.now().isocalendar()[1]
-            now = datetime.datetime.now()
-            today = (now.strftime("%A"))
-            if (today == "Monday"):
-                    first_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-
-            elif (today == "Tuesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    second_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-
-            elif (today == "Wednesday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    third_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-
-            elif (today == "Thursday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fourth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                
-            elif (today == "Friday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    fifth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                    sixth_day = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-
-            elif (today == "Saturday"):
-                    first_day = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%d/%m/%Y')
-                    second_day = (datetime.datetime.today() - datetime.timedelta(days=4)).strftime('%d/%m/%Y')
-                    third_day = (datetime.datetime.today() - datetime.timedelta(days=3)).strftime('%d/%m/%Y')
-                    fourth_day = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%d/%m/%Y')
-                    fifth_day = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%d/%m/%Y')
-                    sixth_day = datetime.datetime.today().strftime('%d/%m/%Y')
-                
-            else:
-
-                    first_day = None
-                    second_day = None
-                    third_day = None
-                    fourth_day = None
-                    fifth_day = None
-                    sixth_day = None
-
-            
+            first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()
             if ( int(request.GET.get('currentweek')) == week and request.GET.get('day1') == first_day  and request.GET.get('day2') == second_day and request.GET.get('day3') == third_day  and request.GET.get('day4') == fourth_day  and request.GET.get('day5') == fifth_day  and request.GET.get('day6') == sixth_day  ):
                 saverecord.save()
                 messages.success(request, "Data saved successfully !!")
@@ -2133,30 +1181,34 @@ def insert_record(request):
                 return render(request, 'insert_record.html', {"name": empname, "data": new_objects, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
 
         else:   
-               
-                empname = request.GET.get('empname')
-                new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
-                return render(request, 'insert_record.html', {"name": empname, "data": new_objects})
+           
+            first_day, second_day, third_day, fourth_day, fifth_day, sixth_day, week, now, today = Days()   
+            empname = request.GET.get('empname')
+            new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
+            return render(request, 'insert_record.html', {"name": empname, "data": new_objects, "first_day": first_day, "second_day": second_day, "third_day": third_day, "fourth_day":fourth_day, "fifth_day":fifth_day, "sixth_day":sixth_day, "week": week})
+
+
+
 
 def display(request):
-    if (request.method == 'GET'):
+    if (request.method == 'POST'):
         
-        if request.GET.get('empname') and request.GET.get('push'):
-            thisname = request.GET.get('empname')
+        if request.POST.get('empnames') and request.POST.get('push'):
+            thisname = request.POST.get('empnames')
             objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [thisname])
             
             return render(request, 'display.html', {"name": thisname, "data": objects})
 
 
-        elif request.GET.get('empname') and request.GET.get('dump'):
-            thisname = request.GET.get('empname')
-            thisweek = int(request.GET.get('currentweek'))
+        elif request.POST.get('empname') and request.POST.get('dump'):
+            thisname = request.POST.get('empname')
+            thisweek = int(request.POST.get('currentweek'))
             objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s and currentweek = %s ', [thisname, thisweek])
 
             objects2 = timeTracking.objects.values()
             df = pd.DataFrame(list(objects2), columns = [ 'empname', 'department', 'currentweek', 'day1', 'time_worked1', 'systemcode1', 'development_phase1', 'project1', 'day2', 'time_worked2', 'systemcode2', 'development_phase2', 'project2', 'day3', 'time_worked3', 'systemcode3', 'development_phase3', 'project3', 'day4', 'time_worked4', 'systemcode4', 'development_phase4', 'project4', 'day5', 'time_worked5', 'systemcode5', 'development_phase5', 'project5', 'day6', 'time_worked6', 'systemcode6', 'development_phase6', 'project6'  ])
             df = df.loc[(df['empname'] == thisname) & (df['currentweek'] == thisweek)]
-            
+            df0 =  pd.DataFrame(columns = [ 'Name', 'Current Week', 'System Code', 'Department', 'Development Phase', 'Project', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
             df1 =  pd.DataFrame(columns = [ 'Name', 'Current Week', 'System Code', 'Department', 'Development Phase', 'Project', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
             df2 =  pd.DataFrame(columns = [ 'Name', 'Current Week', 'System Code', 'Department', 'Development Phase', 'Project', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
             df3 =  pd.DataFrame(columns = [ 'Name', 'Current Week', 'System Code', 'Department', 'Development Phase', 'Project', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
@@ -2167,12 +1219,14 @@ def display(request):
             df7 =  pd.DataFrame(columns = [ 'Name', 'Current Week', 'System Code', 'Department', 'Development Phase', 'Project', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
 
             
-
-            df1['System Code'] = df['systemcode1']
-            df1['Department'] =   df['department']
-            df1['Development Phase'] = df['development_phase1']
-            df1['Project'] = df['project1']
-            df1['Monday'] = df['time_worked1']
+            df0['System Code'] = df['systemcode1']
+            df0['System Code'] = df['systemcode1']
+            df0['Department'] =   df['department']
+            df0['Development Phase'] = df['development_phase1']
+            df0['Project'] = df['project1']
+            df0['Monday'] = df['time_worked1']
+            df0 = df0[df0['System Code'].notna()]
+            df1 = df1.append(df0)
 
             df2['System Code'] = df['systemcode2']
             df2['Department'] =   df['department']
@@ -2219,7 +1273,8 @@ def display(request):
            
             df8 = df1.loc['Total']
             df8 = df8['Monday': 'Saturday' ]
-            df1 = df1[1:7]
+            length = len(df1)-1
+            df1 = df1[0: length]
             df1 = df1.append(df8)
             
             for i in range(len(df1)-1):
@@ -2227,11 +1282,6 @@ def display(request):
                 df1['Current Week'].iloc[i]= thisweek
             #df1 = df1.reset_index(inplace = True)
             
-              
-               
-
-
-           
 
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
             response['Content-Disposition'] = 'attachment; filename="weekly_data2.xlsx"'                                        
@@ -2240,13 +1290,13 @@ def display(request):
 
 
 
-        elif request.GET.get('empname') and request.GET.get('dump2'):
+        elif request.POST.get('empname') and request.POST.get('dump2'):
            name_lists = ['Tommaso_Capuano', 'Jonas_Weis', 'Kiran_Chincholi', 'Juan_R._Llobet', 'Shahid_Mobin', 'Matthias_Hecht', 'Marc_Haßenpflug', 'Lucian-Mircea_Grec', 'Isaac_Lopez', 'Rishabh_Yadav', 'Prathamesh_Malpathak', 'Julian_Erdle', 'Jakob_Habermann', 'Moritz_Baur', 'Gerhard_Becker', 'Fabian_Braun', 'Sebastian_Reiter', 'Dangelo_Aniello', 'Jacob_Lawson', 'Francesc_Betorz', 'Thorben_Schmitz ', 'Geoffroy_de_Dinechin', 'Rehan_Bandara', 'Emmanuel_Telmar', 'Jean_Labuschagne', 'Alberto_Progida ', 'Adrian_Lorenz', 'Robin_Scholtes', 'Julie_Letoile ', 'Mihir_Patwardhan', 'Jacopo_Irone', 'Stefan_Brieschenk', 'Maximilian_Pfohl', 'Johann_Gogesch', 'Tobias_Drexl', 'Thomas_Mason', 'Shrinivas_Iyengar ', 'Martin_Lee', 'Titto_Ephraim_Methew', 'Calvin_Füller', 'Oliver_Hitchens', 'Brunno_B._Vasques', 'Ramzi_Aouimeur', 'Jude_Sudario', 'Giulio_Pacifici', 'Kilian_Reutter', 'Ilker_Yasar', 'Robin_Duhnsen', 'Victor_Covasan', 'Sven_Deist', 'Jannis_Bobinger', 'Jaime_Aguirre', 'Alan_Rochford', 'Matthias_Jacoby', 'Dragos_Varsescu', 'Mathieu_Rayer', 'Elia_Poli', 'Christophe_Geuens', 'Samuel_Leitenmeier ', 'Anton_Liegert', 'Stefan_Eisenknappl', 'Maximilian_Koch', 'Veronika_Pröller', 'Tomasz_Witkowski', 'Omar_Abrahams', 'Emily_Seeberg', 'Fabio_Kerstens', 'Nian_Fuls', 'Patrick_Wagner', 'Marius_Hahn', 'Ines_Pereirinha', 'Andreas_Stark', 'Dmitrii_Matias', 'Filipe_Valentim', 'Amir_Ibrahim', 'Lukas_Welzel', 'Stephan_Schmid', 'David_Maiden ', 'Vasyl_Kashevko', 'Nadine_Steck', 'Laura_Soldo', 'Mario_Araujo', 'Jyotiben_Tiwari', 'Pierre_Groslambert', 'Michael_Mair', 'Jörn_Spurmann', 'Nicholas_Tegg', 'Rolf_Wubben', 'Almero_Gerber', 'Kevin_Eppenga', 'Philipp_Becker', 'Stijn_Koehler ', 'Jonas_Gauger', 'Adem_Tosun', 'Tut_Baldock', 'Daanish_Bambery', 'Alexander_Polidar', 'Beatriz_Oliveira', 'Maximilian_Erhardt', 'Tibor_Völcker', 'Halil_Demiralan', 'Jacopo_Ventura', 'Babu_Maddukuri', 'Thomas_Wüthrich', 
-'Karl_Fuchs', 'Jeije_Van_den_Wijngaart', 'Virgile_Gautier', 'Thomas_Britting', 'Sebastian_Landsmann', 'Philip_Tzonev', 'Julian_Rimer', 'Ibrahim_Ata', 'Karina_Sapelnikova', 'Jonas_Kellner ', 'Daniil_Kedrinski', 'Daniel_Kussner', 'Thomas_Barouh', 'Florian_Eisele', 'Nick_Stein', 'Paul_Haufe', 'Michael_Hörmann', 'Eric_Brunner', 'Andreas_Engel', 'Nitin_Kumar', 'Lukas_Walter ', 'Melanie_Wullaert', 'Pierpaolo_Toniato ', 'David_Abplanalp', 'Marco_Desiderio', 'Yannick_Eydner', 'Trivendra_Kulhare', 'Léo_Bulckaen', 'Naveen_Gunasekaran', 'Stefano_Luca', 'Sydney_Dupasquier', 'Olgierd_Cichorek', 'Andreas_Tumbrink', 'Navin_Subramanian ', 'Monica_Arizaga', 'Guillaume_Lortie', 'Nicola_Zappacosta', 'Filipe_Barreiro', 'Calvin_Hooton', 'Joris_Kievits', 'Malte_Hauck', 'Tiago_Spieß', 'Alan_Saucedo', 'Jakhongir_Mamadov', 'Ponnaiyan_Ramasamy', 'Johannes_Benning', 'Sebastian_Schaeffler', 'Lars_van_der_Heijden', 'Julian_Busch', 'Peter_Nothofer', 'Marios_Karanikolidis', 'Dan_Thilderkvist', 'Sandro_Schönhoff', 'Zeljko_Pavlovic', 'Stefano_Centorame', 'Stefan_Panajotovic', 'Daniel_Severinsen', 'Pjotr_Lengkeek', 'Sammy_Ma', 'Praveen_Vasan', 'Phillip_Abplanalp ', 'Atef_Ghalayini ', 'Amr_Ibrahim', 'Jonathan_Panchyrz', 'Rudra']
-           thisname = request.GET.get('empname')
-           thisweek = int(request.GET.get('currentweek'))
-           password = request.GET.get('password')
-           admin_pass = "RFA10SpaceX0"
+'Karl_Fuchs', 'Jeije_Van_den_Wijngaart', 'Virgile_Gautier', 'Thomas_Britting', 'Sebastian_Landsmann', 'Philip_Tzonev', 'Julian_Rimer', 'Ibrahim_Ata', 'Karina_Sapelnikova', 'Jonas_Kellner ', 'Daniil_Kedrinski', 'Daniel_Kussner', 'Thomas_Barouh', 'Florian_Eisele', 'Nick_Stein', 'Paul_Haufe', 'Michael_Hörmann', 'Eric_Brunner', 'Andreas_Engel', 'Nitin_Kumar', 'Lukas_Walter ', 'Melanie_Wullaert', 'Pierpaolo_Toniato ', 'David_Abplanalp', 'Marco_Desiderio', 'Yannick_Eydner', 'Trivendra_Kulhare', 'Léo_Bulckaen', 'Naveen_Gunasekaran', 'Stefano_Luca', 'Sydney_Dupasquier', 'Olgierd_Cichorek', 'Andreas_Tumbrink', 'Navin_Subramanian ', 'Monica_Arizaga', 'Guillaume_Lortie', 'Nicola_Zappacosta', 'Filipe_Barreiro', 'Calvin_Hooton', 'Joris_Kievits', 'Malte_Hauck', 'Tiago_Spieß', 'Alan_Saucedo', 'Jakhongir_Mamadov', 'Ponnaiyan_Ramasamy', 'Johannes_Benning', 'Sebastian_Schaeffler', 'Lars_van_der_Heijden', 'Julian_Busch', 'Peter_Nothofer', 'Marios_Karanikolidis', 'Dan_Thilderkvist', 'Sandro_Schönhoff', 'Zeljko_Pavlovic', 'Stefano_Centorame', 'Stefan_Panajotovic', 'Daniel_Severinsen', 'Pjotr_Lengkeek', 'Sammy_Ma', 'Praveen_Vasan', 'Phillip_Abplanalp ', 'Atef_Ghalayini ', 'Amr_Ibrahim', 'Jonathan_Panchyrz', 'Rudrawrit_Majumdar']
+           thisname = request.POST.get('empname')
+           thisweek = int(request.POST.get('currentweek'))
+           password = request.POST.get('password')
+           admin_pass = "RFA10Spacex0"
            objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s and currentweek = %s ', [thisname, thisweek])
 
            objects2 = timeTracking.objects.values()
@@ -2324,7 +1374,7 @@ def display(request):
                return response
            else:
               
-              empname = request.GET.get('empname')
+              empname = request.POST.get('empname')
             
               new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
               messages.success(request, "You need a valid Password to access the master Database!!")
@@ -2332,9 +1382,9 @@ def display(request):
 
 
         
-        elif request.GET.get('empname') and request.GET.get('currentweek') and request.GET.get('submit'):
-            thisname = request.GET.get('empname')
-            thisweek = int(request.GET.get('currentweek'))
+        elif request.POST.get('empname') and request.POST.get('currentweek') and request.POST.get('submit'):
+            thisname = request.POST.get('empname')
+            thisweek = int(request.POST.get('currentweek'))
             objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s and currentweek = %s ', [thisname, thisweek])
             sys1 = timeTracking.objects.raw( 'SELECT id, systemcode1 FROM time_history WHERE empname = %s and currentweek = %s ', [thisname, thisweek])
             sys2 = timeTracking.objects.raw( 'SELECT id, systemcode2 FROM time_history WHERE empname = %s and currentweek = %s ', [thisname, thisweek])
@@ -2477,11 +1527,17 @@ def display(request):
 
         else:
             
-            empname = request.GET.get('empname')
+            empname = request.POST.get('empname')
             
             new_objects = timeTracking.objects.raw( 'SELECT * FROM time_history WHERE empname = %s', [empname])
             messages.success(request, "Name not found in the Database!!")
             return render(request, 'display.html', {"name": empname, "data": new_objects})
+
+
+
+    else:
+        return render(request, 'display.html')
+
 
 def delete(request, currentweek):
     deleted = timeTracking.objects.filter( currentweek = currentweek)
@@ -2507,18 +1563,18 @@ def delete_sys(request, id, empname, currentweek):
 
             return redirect( reverse('display' ))
             
-def read_file(filename, **kwargs):
+def read_file(request):
 
-    """Read file with **kwargs; files supported: xls, xlsx, csv, csv.gz, pkl"""
+    if (request.method == 'GET'):
 
-    read_map = {'xls': pd.read_excel, 'xlsx': pd.read_excel, 'csv': pd.read_csv,
-                'gz': pd.read_csv, 'pkl': pd.read_pickle}
-
-    ext = os.path.splitext(filename)[1].lower()[1:]
-    assert ext in read_map, "Input file not in correct format, must be xls, xlsx, csv, csv.gz, pkl; current format '{0}'".format(ext)
-    assert os.path.isfile(filename), "File Not Found Exception '{0}'.".format(filename)
-
-    return read_map[ext](filename, **kwargs)
+       if(request.GET.get('email') and request.GET.get('send')):
+           email = request.GET.get('email')
+           return render(request, 'bootstrap_test.html', {"data" : email})
+       else:
+           email = "none"
+           return render(request, 'bootstrap_test.html', {"data" : email})
+    else:
+        return render(request, 'bootstrap_test.html', {"data" : "something went wrong"})
 
 
 
